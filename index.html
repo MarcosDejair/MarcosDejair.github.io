@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcos Dejair | Certificados</title>
+
+  <!-- Fonte monoespaçada estilo terminal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       VARIÁVEIS GLOBAIS DE COR E ESPAÇAMENTO
+       Altere aqui para mudar o tema inteiro de uma vez.
+       ============================================================ */
+    :root {
+      --bg:          #0a0a0a;   /* fundo principal (preto) */
+      --bg-card:     #111111;   /* fundo dos cartões */
+      --border:      #1f1f1f;   /* borda sutil */
+      --text:        #e8e8e8;   /* texto principal (branco suave) */
+      --text-muted:  #7a7a7a;   /* texto secundário */
+      --green:       #00ff9c;   /* verde neon (destaque) */
+      --green-dark:  #00b36b;   /* verde mais escuro (hover) */
+      --green-glow:  rgba(0, 255, 156, 0.15); /* brilho verde */
+    }
+
+    /* ============================================================
+       RESET BÁSICO
+       ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* rolagem suave ao clicar em âncoras */
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+
+      /* Grade sutil de fundo estilo "cyber" */
+      background-image:
+        linear-gradient(rgba(0, 255, 156, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 156, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ============================================================
+       CONTAINER CENTRAL
+       ============================================================ */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* ============================================================
+       CABEÇALHO — Nome, título e linha de terminal
+       ============================================================ */
+    header {
+      margin-bottom: 60px;
+      border-left: 3px solid var(--green);
+      padding-left: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    header h1 .prompt {
+      color: var(--green);
+      margin-right: 8px;
+    }
+
+    header .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    header .subtitle::before {
+      content: "$ ";
+      color: var(--green);
+    }
+
+    /* ============================================================
+       SEÇÃO DE TÍTULO (CERTIFICADOS, etc.)
+       ============================================================ */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: "//";
+      color: var(--green-dark);
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ============================================================
+       GRADE DE CERTIFICADOS
+       ============================================================ */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    /* Cartão individual de certificado */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Linha verde que aparece no topo ao passar o mouse */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--green);
+      transition: width 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--green-glow);
+    }
+
+    .card:hover::before {
+      width: 100%;
+    }
+
+    .card .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .card .name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card .issuer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card .date {
+      font-size: 0.75rem;
+      color: var(--green-dark);
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============================================================
+       RODAPÉ
+       ============================================================ */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Cursor piscante estilo terminal */
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.1em;
+      background: var(--green);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* ============================================================
+       RESPONSIVO (telas pequenas)
+       ============================================================ */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .container { padding: 40px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ============================================================
+         CABEÇALHO
+         ============================================================ -->
+    <header>
+      <h1><span class="prompt">$</span>Marcos Dejair<span class="cursor"></span></h1>
+      <p class="subtitle">cybersecurity analyst | certifications & writeups</p>
+    </header>
+
+    <!-- ============================================================
+         SEÇÃO: CERTIFICADOS
+         Para adicionar um novo certificado, copie um bloco <a class="card">
+         e altere o href, badge, nome, emissor e data.
+         ============================================================ -->
+    <h2 class="section-title">Certificados</h2>
+    <div class="grid">
+
+      <!-- 🔽 MODELO DE CARD — duplique e edite 🔽 -->
+      <a class="card" href="certificados/exemplo.pdf" target="_blank" rel="noopener">
+        <span class="badge">Certification</span>
+        <span class="name">Nome do Certificado</span>
+        <span class="issuer">Emissor (ex: Offensive Security)</span>
+        <span class="date">Concluído em: MM/AAAA</span>
+      </a>
+      <!-- 🔼 FIM DO MODELO 🔼 -->
+
+      <!-- Exemplo 2 -->
+      <a class="card" href="certificados/exemplo2.pdf" target="_blank" rel="noopener">
+        <span class="badge">Certification</span>
+        <span class="name">Outro Certificado</span>
+        <span class="issuer">Emissor</span>
+        <span class="date">Concluído em: MM/AAAA</span>
+      </a>
+
+    </div>
+
+
+    <footer>
+      <p>
+        <a href="https://github.com/MarcosDejair" target="_blank" rel="noopener">github.com/MarcosDejair</a>
+      </p>
+      <p style="margin-top: 8px;">© <span id="year"></span> Marcos Dejair</p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
