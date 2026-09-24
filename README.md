@@ -9,7 +9,7 @@ Portfólio pessoal de segurança cibernética — certificados, cursos e writeup
 ## 📂 Estrutura
 
 - `index.html` — página principal do portfólio
-- `certificados/` — PDFs dos certificados (Google, Cisco, Coursera...)
+PDFs dos certificados (Google, Cisco, Coursera...)
 
 ## 🎓 Certificações & Cursos
 
