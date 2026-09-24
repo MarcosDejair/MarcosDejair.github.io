@@ -36,7 +36,7 @@
     }
 
     html {
-      scroll-behavior: smooth; /* rolagem suave ao clicar em âncoras */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -93,17 +93,37 @@
       color: var(--green);
     }
 
+    /* Cursor piscante estilo terminal */
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.1em;
+      background: var(--green);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
     /* ============================================================
-       SEÇÃO DE TÍTULO (CERTIFICADOS, etc.)
+       SEÇÃO DE TÍTULO (CERTIFICADOS, CURSOS, etc.)
        ============================================================ */
     .section-title {
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--green);
       margin-bottom: 24px;
+      margin-top: 40px;
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    /* Remove o espaço extra do primeiro título */
+    .section-title:first-of-type {
+      margin-top: 0;
     }
 
     .section-title::before {
@@ -125,7 +145,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 16px;
-      margin-bottom: 60px;
+      margin-bottom: 20px;
     }
 
     /* Cartão individual de certificado */
@@ -201,6 +221,7 @@
       color: var(--text-muted);
       font-size: 0.8rem;
       padding-top: 40px;
+      margin-top: 40px;
       border-top: 1px solid var(--border);
     }
 
@@ -211,20 +232,6 @@
 
     footer a:hover {
       text-decoration: underline;
-    }
-
-    /* Cursor piscante estilo terminal */
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 1.1em;
-      background: var(--green);
-      vertical-align: text-bottom;
-      animation: blink 1s steps(2) infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
     }
 
     /* ============================================================
@@ -245,37 +252,83 @@
          ============================================================ -->
     <header>
       <h1><span class="prompt">$</span>Marcos Dejair<span class="cursor"></span></h1>
-      <p class="subtitle">cybersecurity analyst | certifications & writeups</p>
+      <p class="subtitle">cybersecurity analyst | certificados & writeups</p>
     </header>
 
     <!-- ============================================================
-         SEÇÃO: CERTIFICADOS
-         Para adicionar um novo certificado, copie um bloco <a class="card">
-         e altere o href, badge, nome, emissor e data.
+         SEÇÃO 1: CERTIFICAÇÕES PROFISSIONAIS
+         (Use este bloco para certificações com prova, tipo CompTIA,
+          OSCP, CEH etc. Quando tiver, adicione aqui.)
          ============================================================ -->
-    <h2 class="section-title">Certificados</h2>
+    <h2 class="section-title">Certificações</h2>
     <div class="grid">
 
-      <!-- 🔽 MODELO DE CARD — duplique e edite 🔽 -->
+      <!-- 🔽 MODELO — duplique e edite 🔽 -->
       <a class="card" href="certificados/exemplo.pdf" target="_blank" rel="noopener">
         <span class="badge">Certification</span>
-        <span class="name">Nome do Certificado</span>
-        <span class="issuer">Emissor (ex: Offensive Security)</span>
+        <span class="name">Nome da Certificação</span>
+        <span class="issuer">Emissor</span>
         <span class="date">Concluído em: MM/AAAA</span>
       </a>
       <!-- 🔼 FIM DO MODELO 🔼 -->
 
-      <!-- Exemplo 2 -->
-      <a class="card" href="certificados/exemplo2.pdf" target="_blank" rel="noopener">
-        <span class="badge">Certification</span>
-        <span class="name">Outro Certificado</span>
-        <span class="issuer">Emissor</span>
+    </div>
+
+    <!-- ============================================================
+         SEÇÃO 2: CURSOS — GOOGLE / COURSERA
+         ============================================================ -->
+    <h2 class="section-title">Cursos — Google & Coursera</h2>
+    <div class="grid">
+
+      <!-- Google Cybersecurity Professional -->
+      <a class="card" href="certificados/google-cybersecurity.pdf" target="_blank" rel="noopener">
+        <span class="badge">Google</span>
+        <span class="name">Google Cybersecurity Professional</span>
+        <span class="issuer">Google / Coursera</span>
         <span class="date">Concluído em: MM/AAAA</span>
       </a>
 
+      <!-- Adicione outros cursos da Coursera aqui -->
+      <!--
+      <a class="card" href="certificados/nome-do-curso.pdf" target="_blank" rel="noopener">
+        <span class="badge">Coursera</span>
+        <span class="name">Nome do Curso</span>
+        <span class="issuer">Instituição / Coursera</span>
+        <span class="date">Concluído em: MM/AAAA</span>
+      </a>
+      -->
+
     </div>
 
+    <!-- ============================================================
+         SEÇÃO 3: CURSOS — CISCO NETWORKING ACADEMY
+         ============================================================ -->
+    <h2 class="section-title">Cursos — Cisco</h2>
+    <div class="grid">
 
+      <!-- Cisco Ethical Hacker -->
+      <a class="card" href="certificados/cisco-ethical-hacker.pdf" target="_blank" rel="noopener">
+        <span class="badge">Cisco</span>
+        <span class="name">Ethical Hacker</span>
+        <span class="issuer">Cisco Networking Academy</span>
+        <span class="date">Concluído em: MM/AAAA</span>
+      </a>
+
+      <!-- Adicione outros cursos da Cisco aqui -->
+      <!--
+      <a class="card" href="certificados/cisco-intro-cybersecurity.pdf" target="_blank" rel="noopener">
+        <span class="badge">Cisco</span>
+        <span class="name">Introduction to Cybersecurity</span>
+        <span class="issuer">Cisco Networking Academy</span>
+        <span class="date">Concluído em: MM/AAAA</span>
+      </a>
+      -->
+
+    </div>
+
+    <!-- ============================================================
+         RODAPÉ
+         ============================================================ -->
     <footer>
       <p>
         <a href="https://github.com/MarcosDejair" target="_blank" rel="noopener">github.com/MarcosDejair</a>
@@ -285,6 +338,9 @@
 
   </div>
 
+  <!-- ============================================================
+       SCRIPT MÍNIMO — só atualiza o ano automaticamente
+       ============================================================ -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
